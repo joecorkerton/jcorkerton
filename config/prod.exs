@@ -21,6 +21,20 @@ config :jcorkerton, JcorkertonWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :jcorkerton, JcorkertonWeb.Endpoint,
+  server: true,
+  secret_key_base: "${SECRET_KEY_BASE}"
+
+# Do not print debug messages in production
+config :logger, level: :info
+
+config :jcorkerton, Jcorkerton.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 1
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -58,7 +72,3 @@ config :logger, level: :info
 #
 #     config :jcorkerton, JcorkertonWeb.Endpoint, server: true
 #
-
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
