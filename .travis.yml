@@ -1,0 +1,19 @@
+language: elixir
+elixir: 1.5.3
+otp_release: 20.0
+services:
+  - postgresql
+before_script:
+  - PGPASSWORD=postgres psql -c 'create database jcorkerton_test;' -U postgres
+  - git remote add gigalixir https://$GIGALIXIR_EMAIL:$GIGALIXIR_API_KEY@git.gigalixir.com/$GIGALIXIR_APP_NAME.git
+  - export PATH=$PATH:/usr/lib/chromium-browser/
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3 # give xvfb some time to start
+  - nohup chromedriver &
+deploy:
+  provider: script
+  script: git push -f gigalixir master
+notifications:
+  email:
+    on_success: change
