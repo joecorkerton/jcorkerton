@@ -27,7 +27,15 @@ $ mix ecto.create
 To run the application on localhost:4000:
 
 ```sh
-mix phx.server
+$ mix phx.server
+```
+
+## Deploymemt
+
+To deploy the application to gigalixir:
+
+```sh
+$ git push gigalixir master
 ```
 
 [elixir]: https://elixir-lang.org/install.html
