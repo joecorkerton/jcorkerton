@@ -1,5 +1,7 @@
 defmodule JcorkertonWeb.Router do
   use JcorkertonWeb, :router
+  use Plug.ErrorHandler
+  use Sentry.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]

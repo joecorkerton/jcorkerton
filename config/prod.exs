@@ -35,6 +35,17 @@ config :jcorkerton, Jcorkerton.Repo,
   ssl: true,
   pool_size: 1
 
+# Configure sentry error reporting
+config :sentry,
+  dsn: ""${SENTRY_DSN}"",
+  environment_name: :prod,
+  enable_source_code_context: true,
+  root_source_code_path: File.cwd!,
+  tags: %{
+    env: "production"
+  },
+  included_environments: [:prod]
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
