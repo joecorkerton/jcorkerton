@@ -1,6 +1,8 @@
 defmodule Jcorkerton.Application do
   use Application
 
+  import Cachex.Spec
+
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
@@ -12,8 +14,13 @@ defmodule Jcorkerton.Application do
       supervisor(Jcorkerton.Repo, []),
       # Start the endpoint when the application starts
       supervisor(JcorkertonWeb.Endpoint, []),
-      # Start your own worker by calling: Jcorkerton.Worker.start_link(arg1, arg2, arg3)
-      # worker(Jcorkerton.Worker, [arg1, arg2, arg3]),
+      worker(Cachex, [:cmc_cache, [
+        expiration: expiration(
+          default: :timer.minutes(5),
+          interval: :timer.seconds(30),
+          lazy: true
+        )
+      ]])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

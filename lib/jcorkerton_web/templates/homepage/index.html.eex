@@ -1,0 +1,5 @@
+<%= render "cryptocurrency_ticker.html", cmc_global_values: @cmc_global_values %>
+
+<div>
+  <h2>Interesting things coming soon</h2>
+</div>
