@@ -1,5 +1,9 @@
-<%= render "cryptocurrency_ticker.html", cmc_global_values: @cmc_global_values %>
+<%= render "navbar.html", cmc_global_values: @cmc_global_values %>
 
-<div>
-  <h2>Interesting things coming soon</h2>
+<div class="container">
+  <div class="row pt-5 mt-5">
+    <div class="col text-center">
+      <h2>More interesting things coming soon</h2>
+    </div>
+  </div>
 </div>

@@ -8,6 +8,8 @@
 * [Phoenix]
 * [PostgreSQL]
 * [Gigalixir]
+* Npm
+* Python 2.7 (Node gyp doesn't support Python 3..)
 
 ## Installation
 

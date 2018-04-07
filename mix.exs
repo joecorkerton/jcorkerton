@@ -51,7 +51,8 @@ defmodule Jcorkerton.Mixfile do
       {:sentry, "~> 6.2.0"},
       {:httpoison, "~> 1.1"},
       {:exvcr, "~> 0.10.1", only: :test},
-      {:cachex, "~> 3.0"}
+      {:cachex, "~> 3.0"},
+      {:number, "~> 0.5.5"}
     ]
   end
 
