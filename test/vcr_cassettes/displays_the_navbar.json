@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.coinmarketcap.com/v1/global/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\n    \"total_market_cap_usd\": 267067079373.0, \n    \"total_24h_volume_usd\": 9792835174.0, \n    \"bitcoin_percentage_of_market_cap\": 45.04, \n    \"active_currencies\": 887, \n    \"active_assets\": 673, \n    \"active_markets\": 10104, \n    \"last_updated\": 1523193567\n}",
+      "headers": {
+        "Date": "Sun, 08 Apr 2018 13:23:35 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "258",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=d205f37aa2d00c654324d4905ffe995b31523193815; expires=Mon, 08-Apr-19 13:23:35 GMT; path=/; domain=.coinmarketcap.com; HttpOnly; Secure",
+        "Access-Control-Allow-Origin": "*",
+        "CF-Cache-Status": "HIT",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "40850ca19d616a4f-LHR"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
