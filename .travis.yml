@@ -16,4 +16,5 @@ deploy:
   script: git push -f gigalixir master
 notifications:
   email:
-    on_success: change
+    on_success: never
+    on_failure: change

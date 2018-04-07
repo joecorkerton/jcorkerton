@@ -32,6 +32,23 @@ To run the application on localhost:4000
 $ mix phx.server
 ```
 
+To run the application in terminal
+
+```sh
+$ iex -S mix phx.server
+```
+
+To run tests:
+
+```sh
+$ mix test
+```
+
+Format files:
+```sh
+$ mix format mix.exs “lib/**/*.{ex,exs}” “test/**/*.{ex,exs}”
+```
+
 ## Deploymemt
 
 Deployment is managed by [travis-ci], when tests pass on master

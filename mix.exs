@@ -5,10 +5,16 @@ defmodule Jcorkerton.Mixfile do
     [
       app: :jcorkerton,
       version: "0.0.1",
-      elixir: "~> 1.4",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      elixir: "~> 1.6",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
+      preferred_cli_env: [
+        vcr: :test,
+        "vcr.delete": :test,
+        "vcr.check": :test,
+        "vcr.show": :test
+      ],
       aliases: aliases(),
       deps: deps()
     ]
@@ -20,20 +26,20 @@ defmodule Jcorkerton.Mixfile do
   def application do
     [
       mod: {Jcorkerton.Application, []},
-      extra_applications: [:sentry, :logger, :runtime_tools]
+      extra_applications: [:sentry, :logger, :runtime_tools, :cachex]
     ]
   end
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.0"},
+      {:phoenix, "~> 1.3.2"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
@@ -42,7 +48,10 @@ defmodule Jcorkerton.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:distillery, "~> 1.5", runtime: false},
-      {:sentry, "~> 6.0.0"}
+      {:sentry, "~> 6.2.0"},
+      {:httpoison, "~> 1.1"},
+      {:exvcr, "~> 0.10.1", only: :test},
+      {:cachex, "~> 3.0"}
     ]
   end
 
@@ -56,7 +65,7 @@ defmodule Jcorkerton.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end
