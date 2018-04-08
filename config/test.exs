@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :jcorkerton, JcorkertonWeb.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
@@ -26,5 +26,8 @@ config :exvcr, [
   ],
   filter_url_params: false,
   filter_request_headers: [],
-  response_headers_blacklist: []
+  response_headers_blacklist: [],
+  ignore_localhost: true
 ]
+
+config :hound, driver: "chrome_driver", browser: "chrome_headless"

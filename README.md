@@ -10,6 +10,7 @@
 * [Gigalixir]
 * Npm
 * Python 2.7 (Node gyp doesn't support Python 3..)
+* Chromedriver
 
 ## Installation
 
@@ -40,7 +41,15 @@ To run the application in terminal
 $ iex -S mix phx.server
 ```
 
-To run tests:
+## Testing
+
+Launch chromedriver:
+
+```sh
+$ chromedriver
+```
+
+Run all tests:
 
 ```sh
 $ mix test
