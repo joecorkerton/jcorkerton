@@ -1,8 +1,13 @@
 language: elixir
-elixir: 1.5.3
+elixir: 1.6.4
 otp_release: 20.0
 services:
   - postgresql
+addons:
+  chrome: stable
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install chromium-chromedriver
 before_script:
   - PGPASSWORD=postgres psql -c 'create database jcorkerton_test;' -U postgres
   - git remote add gigalixir https://$GIGALIXIR_EMAIL:$GIGALIXIR_API_KEY@git.gigalixir.com/$GIGALIXIR_APP_NAME.git
