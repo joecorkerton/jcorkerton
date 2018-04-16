@@ -14,13 +14,17 @@ defmodule Jcorkerton.Application do
       supervisor(Jcorkerton.Repo, []),
       # Start the endpoint when the application starts
       supervisor(JcorkertonWeb.Endpoint, []),
-      worker(Cachex, [:cmc_cache, [
-        expiration: expiration(
-          default: :timer.minutes(5),
-          interval: :timer.seconds(30),
-          lazy: true
-        )
-      ]])
+      worker(Cachex, [
+        :cmc_cache,
+        [
+          expiration:
+            expiration(
+              default: :timer.minutes(5),
+              interval: :timer.seconds(30),
+              lazy: true
+            )
+        ]
+      ])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

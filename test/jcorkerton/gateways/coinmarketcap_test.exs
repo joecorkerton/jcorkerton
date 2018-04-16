@@ -6,7 +6,7 @@ defmodule Gateways.CoinmarketcapTest do
     alias Gateways.Coinmarketcap.Global
 
     setup do
-      Global.start
+      Global.start()
     end
 
     test "queries the coinmarketcap global api" do

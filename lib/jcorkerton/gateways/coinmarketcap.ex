@@ -1,5 +1,4 @@
 defmodule Gateways.Coinmarketcap do
-
   defmodule Error do
     defexception message: "Coinmarketcap gateway error"
   end
@@ -18,9 +17,9 @@ defmodule Gateways.Coinmarketcap do
 
     def process_response_body(body) do
       body
-      |> Poison.decode!
+      |> Poison.decode!()
       |> Map.take(@expected_fields)
-      |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
+      |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
     end
   end
 end

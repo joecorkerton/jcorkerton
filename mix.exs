@@ -51,7 +51,8 @@ defmodule Jcorkerton.Mixfile do
       {:sentry, "~> 6.2.0"},
       {:httpoison, "~> 1.1"},
       # Update when PR is merged
-      {:exvcr, git: "git://github.com/joecorkerton/exvcr.git", branch: "ignore-requests", only: :test},
+      {:exvcr,
+       git: "git://github.com/joecorkerton/exvcr.git", branch: "ignore-requests", only: :test},
       {:cachex, "~> 3.0"},
       {:number, "~> 0.5.5"},
       {:hound, "~> 1.0", only: :test}

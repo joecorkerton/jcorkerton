@@ -18,7 +18,7 @@ config :jcorkerton, Jcorkerton.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :exvcr, [
+config :exvcr,
   vcr_cassette_library_dir: "test/vcr_cassettes",
   custom_cassette_library_dir: "test/custom_cassettes",
   filter_sensitive_data: [
@@ -28,6 +28,5 @@ config :exvcr, [
   filter_request_headers: [],
   response_headers_blacklist: [],
   ignore_localhost: true
-]
 
 config :hound, driver: "chrome_driver", browser: "chrome_headless"
