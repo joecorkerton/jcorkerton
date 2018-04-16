@@ -16,6 +16,9 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
   - nohup chromedriver &
+script:
+  - mix format --check-formatted
+  - mix test
 deploy:
   provider: script
   script: git push -f gigalixir master
