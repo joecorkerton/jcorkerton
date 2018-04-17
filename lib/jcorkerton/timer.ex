@@ -8,14 +8,12 @@ defmodule Jcorkerton.Timer do
 
   def init(_state) do
     Logger.warn("Timer server started")
-    broadcast()
-    # 10 sec timer
     schedule_timer(10_000)
     {:ok, DateTime.utc_now()}
   end
 
   def handle_info(:update, _) do
-    broadcast()
+    refresh_data()
     schedule_timer(10_000)
     {:noreply, DateTime.utc_now()}
   end
@@ -24,7 +22,7 @@ defmodule Jcorkerton.Timer do
     Process.send_after(self(), :update, interval)
   end
 
-  defp broadcast() do
-    JcorkertonWeb.Endpoint.broadcast("cryptocurrency:summary", "new_data", %{})
+  defp refresh_data() do
+    Jcorkerton.Cryptocurrency.global_values()
   end
 end

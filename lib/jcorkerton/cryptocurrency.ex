@@ -10,6 +10,10 @@ defmodule Jcorkerton.Cryptocurrency do
 
     case Gateways.Coinmarketcap.Global.get(url) do
       {:ok, response} ->
+        JcorkertonWeb.Endpoint.broadcast("cryptocurrency:summary", "new_data", %{
+          body: response.body
+        })
+
         {:commit, response.body}
 
       {_, response} ->

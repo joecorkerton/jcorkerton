@@ -12,16 +12,13 @@ defmodule JcorkertonWeb.CryptocurrencyChannel do
 
   intercept(["new_data"])
 
-  def handle_out("new_data", _, socket) do
-    Logger.info(inspect(new_cryptocurrency_data()))
-    push(socket, "new_data", new_cryptocurrency_data())
+  def handle_out("new_data", data, socket) do
+    push(socket, "new_data", format_data(data[:body]))
     {:noreply, socket}
   end
 
-  defp new_cryptocurrency_data do
+  defp format_data(data) do
     import JcorkertonWeb.HomepageView
-
-    data = Jcorkerton.Cryptocurrency.global_values()
 
     %{
       total_marketcap: total_marketcap(data),
