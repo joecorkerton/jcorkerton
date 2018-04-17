@@ -24,7 +24,8 @@ defmodule Jcorkerton.Application do
               lazy: true
             )
         ]
-      ])
+      ]),
+      worker(Jcorkerton.Timer, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
