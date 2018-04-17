@@ -1,5 +1,9 @@
 <%= render "navbar.html", crypto_global_values: @crypto_global_values, conn: @conn %>
 
+<div class="alert alert-success fade" role="alert" id="update_alert">
+  <div class="text-center">Cryptocurrency stats updated</div>
+</div>
+
 <div class="container">
   <div class="row pt-5 mt-5">
     <div class="col text-center">

@@ -7,7 +7,7 @@ defmodule Jcorkerton.Timer do
   end
 
   def init(_state) do
-    Logger.warn("Timer server started")
+    Logger.info("Timer server started")
     schedule_timer(10_000)
     {:ok, DateTime.utc_now()}
   end

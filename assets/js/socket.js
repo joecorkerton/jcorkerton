@@ -55,17 +55,16 @@ socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("cryptocurrency:summary", {})
-let totalMarketcap = document.querySelector("#total_marketcap")
-let total24HourVolume = document.querySelector("#total_24_hour_volume")
-let bitcoinDominance = document.querySelector("#bitcoin_dominance")
-let activeTokens = document.querySelector("#active_tokens")
 
 channel.on("new_data", msg => {
-  totalMarketcap.innerText = msg.total_marketcap
-  total24HourVolume.innerText = msg.total_24_hour_volume
-  bitcoinDominance.innerText = msg.bitcoin_dominance
-  activeTokens.innerText = msg.active_tokens
-  console.log(msg)
+  document.querySelector("#total_marketcap").innerText = msg.total_marketcap
+  document.querySelector("#total_24_hour_volume").innerText = msg.total_24_hour_volume
+  document.querySelector("#bitcoin_dominance").innerText = msg.bitcoin_dominance
+  document.querySelector("#active_tokens").innerText = msg.active_tokens
+  $("#update_alert").addClass("show")
+  setTimeout(function() {
+    $("#update_alert").removeClass("show")
+  }, 20000)
 })
 
 channel.join()
