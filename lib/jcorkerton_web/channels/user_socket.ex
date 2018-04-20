@@ -2,7 +2,7 @@ defmodule JcorkertonWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", JcorkertonWeb.RoomChannel
+  channel("cryptocurrency:*", JcorkertonWeb.CryptocurrencyChannel)
 
   ## Transports
   transport(:websocket, Phoenix.Transports.WebSocket)

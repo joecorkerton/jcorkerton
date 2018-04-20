@@ -1,4 +1,8 @@
-<%= render "navbar.html", cmc_global_values: @cmc_global_values, conn: @conn %>
+<%= render "navbar.html", crypto_global_values: @crypto_global_values, conn: @conn %>
+
+<div class="alert alert-success fade" role="alert" id="update_alert">
+  <div class="text-center">Cryptocurrency stats updated</div>
+</div>
 
 <div class="container">
   <div class="row pt-5 mt-5">

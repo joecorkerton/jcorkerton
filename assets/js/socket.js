@@ -54,7 +54,19 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("cryptocurrency:summary", {})
+
+channel.on("new_data", msg => {
+  document.querySelector("#total_marketcap").innerText = msg.total_marketcap
+  document.querySelector("#total_24_hour_volume").innerText = msg.total_24_hour_volume
+  document.querySelector("#bitcoin_dominance").innerText = msg.bitcoin_dominance
+  document.querySelector("#active_tokens").innerText = msg.active_tokens
+  $("#update_alert").addClass("show")
+  setTimeout(function() {
+    $("#update_alert").removeClass("show")
+  }, 20000)
+})
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })

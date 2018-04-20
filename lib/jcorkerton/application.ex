@@ -15,7 +15,7 @@ defmodule Jcorkerton.Application do
       # Start the endpoint when the application starts
       supervisor(JcorkertonWeb.Endpoint, []),
       worker(Cachex, [
-        :cmc_cache,
+        :coinmarketcap,
         [
           expiration:
             expiration(
@@ -24,7 +24,8 @@ defmodule Jcorkerton.Application do
               lazy: true
             )
         ]
-      ])
+      ]),
+      worker(Jcorkerton.Timer, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

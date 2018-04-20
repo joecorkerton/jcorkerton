@@ -53,7 +53,8 @@ defmodule Jcorkerton.Mixfile do
       {:exvcr, "~> 0.10.2", only: :test},
       {:cachex, "~> 3.0"},
       {:number, "~> 0.5.5"},
-      {:hound, "~> 1.0", only: :test}
+      {:hound, "~> 1.0", only: :test},
+      {:mox, "~> 0.3", only: :test}
     ]
   end
 
