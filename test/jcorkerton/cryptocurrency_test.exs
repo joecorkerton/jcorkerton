@@ -19,21 +19,13 @@ defmodule CryptocurrencyTest do
 
   setup [:set_mox_global, :verify_on_exit!]
 
-  test "foo", %{socket: _socket} do
-    response = [
-      total_market_cap_usd: 1,
-      total_24h_volume_usd: 3_000,
-      bitcoin_percentage_of_market_cap: 0,
-      active_currencies: 3_743,
-      active_assets: 10
-    ]
-
+  test "Fetches the response from cmc gateway and broadcasts event", %{socket: _socket} do
     Gateways.Coinmarketcap.GlobalMock
-    |> expect(:get, fn "/" -> {:ok, %{body: response}} end)
+    |> expect(:get, fn "/" -> {:ok, %{body: [foo: "bar"]}} end)
 
-    assert Cryptocurrency.global_values() == response
-    assert_broadcast("new_data", %{body: response})
+    assert Cryptocurrency.global_values() == [foo: "bar"]
+    assert_broadcast("new_data", %{body: [foo: "bar"]})
     # Ensure we don't hit the Coinmarketcap endpoint again
-    assert Cryptocurrency.global_values() == response
+    assert Cryptocurrency.global_values() == [foo: "bar"]
   end
 end
