@@ -2,13 +2,13 @@ defmodule Jcorkerton.Cryptocurrency do
   require Logger
 
   def global_values do
-    Cachex.fetch!(:cmc_cache, "/", &fetch_coinmarketcap_response/1)
+    Cachex.fetch!(:coinmarketcap, "/", &fetch_coinmarketcap_response/1)
   end
 
   defp fetch_coinmarketcap_response(url) do
     Logger.info("Fetching data from coinmarketcap")
 
-    case Gateways.Coinmarketcap.Global.get(url) do
+    case coinmarketcap_global().get(url) do
       {:ok, response} ->
         JcorkertonWeb.Endpoint.broadcast("cryptocurrency:summary", "new_data", %{
           body: response.body
@@ -27,5 +27,9 @@ defmodule Jcorkerton.Cryptocurrency do
 
         {:ignore, nil}
     end
+  end
+
+  defp coinmarketcap_global do
+    Application.get_env(:jcorkerton, :cmc_global)
   end
 end

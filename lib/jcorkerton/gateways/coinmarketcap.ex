@@ -6,6 +6,8 @@ defmodule Gateways.Coinmarketcap do
   defmodule Global do
     use HTTPoison.Base
 
+    @callback get(url :: String.t()) :: keyword()
+
     @expected_fields ~w(
       total_market_cap_usd total_24h_volume_usd bitcoin_percentage_of_market_cap active_currencies active_assets
       active_markets last_updated

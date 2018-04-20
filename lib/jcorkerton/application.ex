@@ -15,7 +15,7 @@ defmodule Jcorkerton.Application do
       # Start the endpoint when the application starts
       supervisor(JcorkertonWeb.Endpoint, []),
       worker(Cachex, [
-        :cmc_cache,
+        :coinmarketcap,
         [
           expiration:
             expiration(
