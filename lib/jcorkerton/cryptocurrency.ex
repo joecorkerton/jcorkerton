@@ -1,6 +1,10 @@
 defmodule Jcorkerton.Cryptocurrency do
   require Logger
 
+  @moduledoc """
+  Provides access to live cryptocurrency data
+  """
+
   def global_values do
     Cachex.fetch!(:coinmarketcap, "/", &fetch_coinmarketcap_response/1)
   end

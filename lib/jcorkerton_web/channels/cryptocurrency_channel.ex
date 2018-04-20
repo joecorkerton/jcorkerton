@@ -2,6 +2,10 @@ defmodule JcorkertonWeb.CryptocurrencyChannel do
   use Phoenix.Channel
   require Logger
 
+  @moduledoc """
+  Channel to update clients with new cryptocurrency data
+  """
+
   def join("cryptocurrency:summary", _message, socket) do
     {:ok, socket}
   end

@@ -1,6 +1,8 @@
 defmodule Jcorkerton.Application do
   use Application
 
+  @moduledoc false
+
   import Cachex.Spec
 
   # See https://hexdocs.pm/elixir/Application.html
