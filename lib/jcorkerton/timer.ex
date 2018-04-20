@@ -2,6 +2,10 @@ defmodule Jcorkerton.Timer do
   use GenServer
   require Logger
 
+  @moduledoc """
+  Genserver which refreshes cryptocurrency data every 10 seconds
+  """
+
   def start_link() do
     GenServer.start_link(__MODULE__, %{})
   end

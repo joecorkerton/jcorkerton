@@ -60,6 +60,11 @@ Format files:
 $ mix format
 ```
 
+Credo style suggestions:
+```sh
+$ mix credo
+```
+
 ## Deploymemt
 
 Deployment is managed by [travis-ci], when tests pass on master

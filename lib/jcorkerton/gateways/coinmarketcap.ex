@@ -6,6 +6,10 @@ defmodule Gateways.Coinmarketcap do
   defmodule Global do
     use HTTPoison.Base
 
+    @moduledoc """
+    Gateway to access coinmarketcap global stats endpoint
+    """
+
     @callback get(url :: String.t()) :: keyword()
 
     @expected_fields ~w(
